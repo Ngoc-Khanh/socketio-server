@@ -3,7 +3,8 @@ const { Server } = require("socket.io");
 const http = require("http");
 
 const app = express();
-const io = new Server(http.createServer(app));
+const server = http.createServer(app);
+const io = new Server(server);
 
 io.on("connection", (socket) => {
   console.log("Client connected:", socket.id);
